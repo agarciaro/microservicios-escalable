@@ -42,6 +42,7 @@
     	<module>inventory-service</module>
     	<module>orders-service</module>
     	<module>api-gateway</module>
+    	<module>discovery-server</module>
     </modules>
     
      <build>
