@@ -30,9 +30,9 @@ public class OrderController {
     @PostMapping
     //@ResponseStatus(HttpStatus.CREATED)
     @CircuitBreaker(name = "orders-service", fallbackMethod = "placeOrderFallback")
-    public ResponseEntity<String> placeOrder(@RequestBody OrderRequest orderRequest) {
-        this.orderService.placeOrder(orderRequest);
-        return new ResponseEntity<String>("Order placed successfully", HttpStatus.CREATED);
+    public ResponseEntity<OrderResponse> placeOrder(@RequestBody OrderRequest orderRequest) {
+        var orderResponse = this.orderService.placeOrder(orderRequest);
+        return new ResponseEntity<OrderResponse>(orderResponse, HttpStatus.CREATED);
     }
 
     @GetMapping
